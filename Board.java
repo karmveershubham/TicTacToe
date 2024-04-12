@@ -62,4 +62,12 @@ public class Board {
         }
         return true;
     }
+
+    public boolean isEmptyCell(int row, int col) {
+        if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == '-'){
+             return true;
+        } 
+        return false;
+     }
+ 
 }
