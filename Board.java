@@ -1,20 +1,22 @@
 public class Board {
     private char[][] board;
+    private int size;
 
-    public Board() {
-        board = new char[3][3];
+    public Board(int size) {
+        this.size = size;
+        board = new char[size][size];
         initializeBoard();
     }
 
-    private void initializeBoard() {
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
+    void initializeBoard() {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 board[i][j] = '-';
             }
         }
     }
 
-    public void displayBoard() {
+    void displayBoard() {
         System.out.println("-------------");
         for (int i = 0; i < 3; i++) {
             System.out.print("| ");
@@ -26,7 +28,7 @@ public class Board {
         }
     }
 
-    public boolean makeMove(int row, int col, char player) {
+    boolean makeMove(int row, int col, char player) {
         if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == '-') {
             board[row][col] = player;
             return true;
@@ -34,7 +36,7 @@ public class Board {
         return false;
     }
 
-    public boolean checkWin(char player) {
+    boolean checkWin(char player) {
         for (int i = 0; i < 3; i++) {
             if (board[i][0] == player && board[i][1] == player && board[i][2] == player) {
                 return true;
@@ -52,7 +54,7 @@ public class Board {
         return false;
     }
 
-    public boolean isBoardFull() {
+    boolean isBoardFull() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 if (board[i][j] == '-') {
@@ -63,11 +65,14 @@ public class Board {
         return true;
     }
 
-    public boolean isEmptyCell(int row, int col) {
+    boolean isEmptyCell(int row, int col) {
         if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == '-'){
              return true;
         } 
         return false;
-     }
- 
+    }
+
+    int getSize(){
+        return size;
+    }
 }
