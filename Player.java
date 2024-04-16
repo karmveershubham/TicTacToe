@@ -22,30 +22,7 @@ class HumanPlayer extends Player {
         super(player);
     }
 
-    @Override
-    public int[] makeMove(Board board) {
-        int row = -1; // Initializing to -1 to ensure we detect if the input was invalid
-        int col = -1;
-        Scanner scanner = new Scanner(System.in);
-        System.out.println(player + "'s turn.");
-        System.out.print("Enter row and column (0-2): ");
-        while (row < 0 || row > 2 || col < 0 || col > 2) { // Keep asking until valid input is received
-            try {
-                row = scanner.nextInt();
-                col = scanner.nextInt();
-                if (row < 0 || row > 2 || col < 0 || col > 2) {
-                    System.out.println("Invalid input! Row and column must be between 0 and 2.");
-                    System.out.print("Enter row and column (0-2): ");
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Invalid input! Please enter a valid numeric value for row and column.");
-                scanner.next(); // Consume invalid input to avoid infinite loop
-                System.out.print("Enter row and column (0-2): ");
-            }
-        }
-        return new int[]{row, col};
-    }
-}
+
 
 class ComputerPlayer extends Player {
     public ComputerPlayer(char player) {
