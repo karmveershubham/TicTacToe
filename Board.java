@@ -28,8 +28,8 @@ public class Board {
         }
     }
 
-    boolean makeMove(int row, int col, char player) {
-        if (row >= 0 && row < 3 && col >= 0 && col < 3 && board[row][col] == '-') {
+    boolean validMove(int row, int col, char player) {
+        if (board[row][col] == '-') {
             board[row][col] = player;
             return true;
         }
